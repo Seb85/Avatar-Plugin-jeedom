@@ -5,7 +5,7 @@ require('colors');
 
 exports.action = function (data, callback) {
 
-	info("Bruits animaux from:", data.client.yellow);
+	info("Jeedom from:", data.client.yellow);
 
     var debug = false;
 
