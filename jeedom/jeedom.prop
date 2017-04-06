@@ -6,7 +6,7 @@
 			"addrJeedom": "http://192.168.1.36",
 			"apikeyJeedom": "api",
 			"app_version": "0.0.1"
-			"rules" : ["light"],
+			"rules" : ["light"]
 			}
 		}
 	}
