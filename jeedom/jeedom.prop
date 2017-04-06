@@ -7,8 +7,8 @@
 			"apikeyJeedom": "api",
 			"manageLight" : {	
         			"command" : "switchLight",
-				"100" : ["turn on * light"],
-				"0" : ["turn off * light"]
+				"45" : ["turn on * light"],
+				"46" : ["turn off * light"]
 			}
 		}
 	}
