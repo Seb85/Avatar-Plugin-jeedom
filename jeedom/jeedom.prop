@@ -5,8 +5,10 @@
 			"version": "1.0",
 			"addrJeedom": "http://192.168.1.36",
 			"apikeyJeedom": "api",
-			"rules" : {
-				 "43" : ["light"]
+			"manageLight" : {	
+        			"command" : "switchLight",
+				"100" : ["turn on * light"],
+				"0" : ["turn off * light"]
 			}
 		}
 	}
