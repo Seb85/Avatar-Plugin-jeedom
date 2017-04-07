@@ -29,9 +29,9 @@ exports.default = function (state) {
 				
 					state.action = {
 						module: 'jeedom',
-						command: rule,	
+						id: rule,
 						value: value,
-						tts: tts	
+						tts: tts
 					};
 			}		
 				
