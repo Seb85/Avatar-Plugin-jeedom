@@ -30,6 +30,7 @@ exports.default = function (state) {
 					state.action = {
 						module: 'jeedom',
 						id: rule,
+						method: 'execute',
 						value: value,
 						tts: tts
 					};
