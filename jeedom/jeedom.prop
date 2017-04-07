@@ -5,8 +5,13 @@
 			"version": "1.0",
 			"addrJeedom": "http://192.168.1.36",
 			"apikeyJeedom": "api",
+			"tts_action" : {
+				 "45" : "J'allume la lumière",
+				 "46" : "J'éteins la lumière"
+			},
 			"rules" : {	
-				"45" : ["turn on * light"]
+				"45" : ["turn on * light"],
+				"46" : ["turn off * light"]
 			}
 		}
 	}
