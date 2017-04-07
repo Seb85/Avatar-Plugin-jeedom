@@ -6,24 +6,36 @@ Object.defineProperty(exports, "__esModule", {
 
 
 var _helpers = require('../../node_modules/ava-ia/lib/helpers');
+
 exports.default = function (state) {
 	
 	return new Promise(function (resolve, reject) {
 		
-		
-		var match;
 		for (var rule in Config.modules.jeedom.rules) {
-			match = (0, _helpers.syntax)(state.sentence, Config.modules.jeedom[45]);
-			if (match) break;
-			
-		setTimeout(function(){ 
-			if (state.debug) info('ActionDomotique'.bold.yellow, 'action:', 45.yellow);
-			state.action = {
-				module: 'jeedom',
-				command: 45
-			};
-			resolve(state);
-		}, 500);	
+			  var match = (0, _helpers.syntax)(state.sentence, Config.modules.jeedom.rules[rule]); 
+			  if (match) break;
+		}
 		
+		 setTimeout(function(){ 			
+			if (match) {
+				
+				var value, tts = false;
+				if (Config.modules.jeedom.tts_action[rule]) {
+					value = Config.modules.jeedom.tts_action[rule]
+					tts = true;
+				}
+				
+				if (state.debug) info('ActionDomotique'.bold.yellow, 'action:', rule.yellow);
+				
+					state.action = {
+						module: 'jeedom',
+						command: rule,	
+						value: value,
+						tts: tts	
+					};
+			}		
+				
+			resolve(state);	
+		}, 500);
 	});
 };
