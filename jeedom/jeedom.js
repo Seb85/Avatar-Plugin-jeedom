@@ -120,14 +120,13 @@ exports.action = function (data, callback) {
     /************************************************************************************************
      ** Main
      ************************************************************************************************/
-    console.log('Plugin "jeedom" for Sarah starting');
     config = Config.modules.jeedom;
 	if (!config.apikeyJeedom){
 		console.log("Clef api manquante");
 		callback({'tts' : 'Clef api manquante'});
 		return;
 	}
-	console.log(data);
+	
 	if(data.method == 'execute')
 		jeedomProcess.emit(data.method);
 	
