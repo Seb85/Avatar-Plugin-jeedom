@@ -128,7 +128,7 @@ exports.action = function (data, callback) {
 	}
 	
 	if(data.method == 'execute')
-		jeedomProcess.emit(data.method);
+		jeedomProcess.emit(data.action.method);
 	
 	callback();
 	};
