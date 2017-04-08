@@ -23,16 +23,6 @@ exports.action = function (data, callback) {
      ************************************************************************************************/
     var callbackReturn = new EventEmitter();
 
-    /***************************************************
-     ** @description Set the tts message
-     ** @function tts
-     ** @param message string
-     ***************************************************/
-    callbackReturn.on('tts', function (message) {
-        console.log(message);
-        callback({tts: message});
-    });
-
     /************************************************************************************************
      ** jeedomProcess method
      ************************************************************************************************/
@@ -47,31 +37,9 @@ exports.action = function (data, callback) {
         var jsonrpc = getJsonRpc();
         jsonrpc.method = 'execute';
         for (var i in data) {
-            jsonrpc.params[i] = data[i];
+            jsonrpc.params.id = data.action.id;
         }
         sendJsonRequest(jsonrpc, readReturn);
-    });
-	
-	/***************************************************
-     ** @description Ask user
-     ** @function ask
-     ***************************************************/
-    jeedomProcess.on('ask', function () {
-        console.log('--------ASK--------');
-		console.log(data);
-		response_raw = JSON.parse(data.response);
-		response = {};
-		for(var i in response_raw){
-			response[response_raw[i]] = response_raw[i];
-		}
-        SARAH.askme(data.ask, response, data.timeout * 1000, function(answer, end){
-			console.log('Answer : ' + answer);
-			var jsonrpc = getJsonRpc();
-			jsonrpc.method = 'askResult';
-			jsonrpc.params['id'] = data.id;
-			jsonrpc.params['response'] = answer;
-			sendJsonRequest(jsonrpc, end);
-		});
     });
 	
 	/***************************************************
@@ -160,9 +128,8 @@ exports.action = function (data, callback) {
 		return;
 	}
 	console.log(data);
-	if(data.method == 'execute'){
+	if(data.method == 'execute')
 		jeedomProcess.emit(data.method);
-	}else{
-		callback();
-	}
-};
+	
+	callback();
+	};
