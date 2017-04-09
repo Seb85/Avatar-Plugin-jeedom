@@ -86,7 +86,7 @@ exports.action = function (data, callback) {
      ***************************************************/
     function getJsonRpc() {
         var jsonrpc = {};
-        jsonrpc.id = data.id;
+        jsonrpc.id = data.action.id;
         jsonrpc.params = {};
         jsonrpc.params.apikey = Config.modules.jeedom.apikeyJeedom;
         jsonrpc.params.plugin = 'sarah';
