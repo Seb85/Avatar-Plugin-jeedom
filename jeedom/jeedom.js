@@ -39,7 +39,7 @@ exports.action = function (data, callback) {
         for (var i in data) {
             jsonrpc.params.id = data.action.id;
         }
-        sendJsonRequest(jsonrpc, readReturn);
+        sendJsonRequest(jsonrpc);
     });
 	
 	/***************************************************
@@ -65,12 +65,7 @@ exports.action = function (data, callback) {
                 console.log('Error: Callback request');
                 callbackReturn.emit('tts', 'Echec de la requete à jeedom');
             }
-			result = checkReturn(JSON.parse(json));
-			if(result === false){
-				return;
-			}
             console.log('-------REQUEST SUCCESS-------');
-			callback(JSON.parse(json)['result']);
         });
     }
 
@@ -92,6 +87,15 @@ exports.action = function (data, callback) {
         jsonrpc.params.plugin = 'sarah';
         jsonrpc.jsonrpc = '2.0';
         return jsonrpc;
+    }
+	
+    /***************************************************
+     ** @description Update xml file from jeedom
+     ** @function readReturn
+     ** @param string _return
+     ***************************************************/
+    function readReturn(_return) {
+        callbackReturn.emit('tts', _return);
     }
 
     /***************************************************
