@@ -48,7 +48,7 @@ exports.action = function (data, callback) {
      ***************************************************/
 
 	function sendJsonRequest(_jsonrpc, callback){
-        var adresse = config.addrJeedom;
+        var adresse = Config.modules.jeedom.addrJeedom;
         if (adresse.indexOf('http://') < 0) {
             adresse = 'http://' + adresse;
         }
