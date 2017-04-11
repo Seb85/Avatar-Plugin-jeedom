@@ -1,18 +1,96 @@
 {
-	"modules" : { 
-		"jeedom"  : {
-			"description": "Plugin pour commander jeedom",
-			"version": "1.0",
-			"addrJeedom": "http://192.168.1.36",
-			"apikeyJeedom": "api",
-			"tts_action" : {
-				 "45" : "J'allume la lumière",
-				 "46" : "J'éteins la lumière"
+  "modules" : { 
+    "Jeedom" : {
+		"description": "Gestion de Jeedom",
+		"version": "1.0",
+		"answers" : "voilà|Comme si c'était fait|tout de suite|c'est fait|itse done|magique",
+		"php" : "/core/api/jeeApi.php",
+		"apikey"     : "qI5FDtYsRONgZTvvE7fX",
+		"addrJeedom" : "http://192.168.1.36",
+		"clients":{
+			"all":{
+				"tvon" : "71"
 			},
-			"rules" : {	
-				"45" : ["turn on * light"],
-				"46" : ["turn off * light"]
+			"sejour":{
+				"On":"45",	
+				"Off":"46",
+				"Green 1": "56",
+				"Red 1": "57",
+				"Yellow 1": "60",
+				"Green 2": "56",
+				"Red 2": "57",
+				"Yellow 2": "60",
+				"OnHUESejour1" : "63",
+				"OffHUESejour1" : "64",
+				"OnHUESejour2" : "65",
+				"OffHUESejour2" : "66",
+				"lumiereambiance" : "70"
+			},
+			"bureau":{
+				"On" : "148",
+				"Off": "62"
+			},
+			"chambre d'amis":{
+				"On" : "75",
+				"Off": "74"
+			},
+			"salle de bain":{
+				"On" : "80",
+				"Off": "78"
+			},
+			"salon":{
+				"On" : "43",
+				"Off": "44",
+				"Green": "56",
+				"Red": "57",
+				"Yellow": "60",
+				"OnHUESalon" : "61",
+				"OffHUESalon" : "62"
+			},
+			"cuisine":{
+				"On" : "50",
+				"Off": "51"
+			},
+			"chambre":{
+				"On":"59",
+				"Off":"168",
+				"Green": "67",
+				"Red": "68",
+				"Yellow": "69"
 			}
+		},
+		"intentRules" : ["rules","lightColor","scenario","manageLight"],
+		"rules" : {
+			"resetSwitch" : ["take care * light","occupy yourself * light"]
+		},
+		"lightColor":{
+			"command" : "switchLight",
+			"Green 1" 	: ["first lamp * green"],
+			"Red 1" 	: ["first lamp * red"],
+			"Yellow 1" 	: ["first lamp * yellow"],
+			"Green 2" 	: ["second lamp * green"],
+			"Red 2" 	: ["second lamp * red"],
+			"Yellow 2" 	: ["second lamp * yellow"],
+			"Green" 	: ["lamp * green"],
+			"Red" 	: ["lamp * red"],
+			"Yellow" 	: ["lamp * yellow"]
+		},
+		"scenario":{
+			"command" : "switchLight",
+			"lumiereambiance" 	: ["ambient light"],
+			"tvon" 	: ["turn on the tv"]
+		},
+		"manageLight" : {
+			"command" : "switchLight",
+			"On" : ["turn on * light","light * light"],
+			"Off" : ["turn off * light"],
+			"OnHUESalon" : ["turn on * lamp"","light * lamp"],
+			"OffHUESalon" : ["turn off * lamp"],
+			"OnHUESejour1" : ["light * first lamp"],
+			"OffHUESejour" : ["turn off * second lamp"],
+			"OnHUESejour2" : ["light * second lamp"],
+			"OffHUESejour2" : ["turn off * first lamp"]
 		}
-	}
+    }
+  }
 }
