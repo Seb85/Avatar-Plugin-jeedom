@@ -37,9 +37,9 @@
 			"chambre":{
 				"On":"59",
 				"Off":"168",
-				"Green": "67",
-				"Red": "68",
-				"Yellow": "69"
+				"GreenChambre": "67",
+				"RedChambre": "68",
+				"YellowChambre": "69"
 			}
 		},
 		"intentRules" : ["rules","lightColor","scenario","manageLight"],
@@ -56,7 +56,10 @@
 			"YellowSejour2" 	: ["second lamp * yellow"],
 			"GreenSalon" 	: ["living room lamp * green"],
 			"RedSalon" 	: ["living room lamp * red"],
-			"YellowSalon" 	: ["living room lamp * yellow"]
+			"YellowSalon" 	: ["living room lamp * yellow"],
+			"GreenChambre" 	: ["light * room * green"],
+			"RedChambre" 	: ["light * room * red"],
+			"YellowChambre" : ["light * room * yellow"]
 		},
 		"scenario":{
 			"command" : "switchLight",
