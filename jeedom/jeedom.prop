@@ -11,14 +11,10 @@
 			"sejour":{
 				"On":"45",	
 				"Off":"46",
-				"OnSalon":"80",	
-				"OffSalon":"81",
 				"OnHUESejour1" : "63",
 				"OffHUESejour1" : "64",
 				"OnHUESejour2" : "65",
 				"OffHUESejour2" : "66",
-				"OnHUESalon" : "61",
-				"OffHUESalon" : "62",
 				"lumiereambiance" : "70",
 				"GreenSejour1": "56",
 				"RedSejour1": "57",
@@ -26,13 +22,32 @@
 				"GreenSejour2": "56",
 				"RedSejour2": "57",
 				"YellowSejour2": "60",
-				"GreenSalon": "56",
-				"RedSalon": "57",
-				"YellowSalon": "60"
+				"TVOn": "252"
+			},
+			"salon":{
+				"On" : "43",
+				"Off": "44",
+				"OnHUESalon" : "61",
+				"OffHUESalon" : "62",
+				"GreenSalon": "63",
+				"RedSalon": "64",
+				"YellowSalon": "65"
+			},
+			"cuisine":{
+				"On" : "50",
+				"Off": "51"
 			},
 			"bureau":{
 				"On" : "148",
 				"Off": "62"
+			},
+			"salledebain":{
+				"On" : "80",
+				"Off": "78"
+			},
+			"chambreamis":{
+				"On" : "75",
+				"Off": "74"
 			},
 			"chambre":{
 				"On":"59",
@@ -48,30 +63,28 @@
 		},
 		"lightColor":{
 			"command" : "switchLight",
-			"GreenSejour1" 	: ["first lamp * green"],
-			"RedSejour1" 	: ["first lamp * red"],
-			"YellowSejour1" 	: ["first lamp * yellow"],
-			"GreenSejour2" 	: ["second lamp * green"],
-			"RedSejour2" 	: ["second lamp * red"],
-			"YellowSejour2" 	: ["second lamp * yellow"],
-			"GreenSalon" 	: ["living room lamp * green"],
-			"RedSalon" 	: ["living room lamp * red"],
-			"YellowSalon" 	: ["living room lamp * yellow"],
-			"GreenChambre" 	: ["light * room * green"],
-			"RedChambre" 	: ["light * room * red"],
-			"YellowChambre" : ["light * room * yellow"]
+			"GreenSejour1" 	: ["first lamp * green","first light * green"],
+			"RedSejour1" 	: ["first lamp * red","first light * red"],
+			"YellowSejour1" 	: ["first lamp * yellow","first light * yellow"],
+			"GreenSejour2" 	: ["second lamp * green","second light * green"],
+			"RedSejour2" 	: ["second lamp * red","second light * red"],
+			"YellowSejour2" 	: ["second lamp * yellow","second light * yellow"],
+			"GreenSalon" 	: ["lamp * green"],
+			"RedSalon" 	: ["lamp * red"],
+			"YellowSalon" 	: ["lamp * yellow"],
+			"GreenChambre" 	: ["switches * light * green"],
+			"RedChambre" 	: ["switches * light * red"],
+			"YellowChambre" 	: ["switches * light * yellow"]
 		},
 		"scenario":{
 			"command" : "switchLight",
 			"lumiereambiance" 	: ["ambient light"],
-			"71" 	: ["turn on the tv"]
+			"TVOn" 	: ["turn on the tv"]
 		},
 		"manageLight" : {
 			"command" : "switchLight",
 			"On" : ["turn on * light","light * light"],
 			"Off" : ["turn off * light"],
-			"OnSalon" : ["light * living room light"],
-			"OffSalon" : ["turn off * living room light"],
 			"OnHUESalon" : ["turn on * lamp","light * lamp"],
 			"OffHUESalon" : ["turn off * lamp"],
 			"OnHUESejour1" : ["light * first lamp"],
