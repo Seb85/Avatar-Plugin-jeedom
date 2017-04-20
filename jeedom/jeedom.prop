@@ -5,8 +5,8 @@
 		"version": "1.0",
 		"answers" : "voilà|Comme si c'était fait|tout de suite|c'est fait|itse done|magique",
 		"php" : "/core/api/jeeApi.php",
-		"apikey"     : "api",
-		"addrJeedom" : "http://192.168.1.36",
+		"apikey"     : "API KEY",
+		"addrJeedom" : "IP JEEDOM",
 		"clients":{
 			"Salon":{
 				"On":"45",	
