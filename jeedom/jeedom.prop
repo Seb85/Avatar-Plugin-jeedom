@@ -8,89 +8,27 @@
 		"apikey"     : "api",
 		"addrJeedom" : "http://192.168.1.36",
 		"clients":{
-			"sejour":{
+			"Salon":{
 				"On":"45",	
-				"Off":"46",
-				"OnHUESejour1" : "63",
-				"OffHUESejour1" : "64",
-				"OnHUESejour2" : "65",
-				"OffHUESejour2" : "66",
-				"lumiereambiance" : "70",
-				"GreenSejour1": "56",
-				"RedSejour1": "57",
-				"YellowSejour1": "60",
-				"GreenSejour2": "56",
-				"RedSejour2": "57",
-				"YellowSejour2": "60",
-				"TVOn": "252"
+				"Off":"46"
 			},
-			"salon":{
-				"On" : "43",
-				"Off": "44",
-				"OnHUESalon" : "61",
-				"OffHUESalon" : "62",
-				"GreenSalon": "63",
-				"RedSalon": "64",
-				"YellowSalon": "65"
-			},
-			"cuisine":{
+			"Cuisine":{
 				"On" : "50",
 				"Off": "51"
 			},
-			"bureau":{
-				"On" : "148",
-				"Off": "62"
-			},
-			"salledebain":{
-				"On" : "80",
-				"Off": "78"
-			},
-			"chambreamis":{
-				"On" : "75",
-				"Off": "74"
-			},
-			"chambre":{
-				"On":"59",
-				"Off":"168",
-				"GreenChambre": "67",
-				"RedChambre": "68",
-				"YellowChambre": "69"
+			"Chambre":{
+				"On":"53",
+				"Off":"54"
 			}
 		},
-		"intentRules" : ["rules","lightColor","scenario","manageLight"],
+		"intentRules" : ["rules","manageLight"],
 		"rules" : {
 			"resetSwitch" : ["take care * light","occupy yourself * light"]
-		},
-		"lightColor":{
-			"command" : "switchLight",
-			"GreenSejour1" 	: ["first lamp * green","first light * green"],
-			"RedSejour1" 	: ["first lamp * red","first light * red"],
-			"YellowSejour1" 	: ["first lamp * yellow","first light * yellow"],
-			"GreenSejour2" 	: ["second lamp * green","second light * green"],
-			"RedSejour2" 	: ["second lamp * red","second light * red"],
-			"YellowSejour2" 	: ["second lamp * yellow","second light * yellow"],
-			"GreenSalon" 	: ["lamp * green"],
-			"RedSalon" 	: ["lamp * red"],
-			"YellowSalon" 	: ["lamp * yellow"],
-			"GreenChambre" 	: ["switches * light * green"],
-			"RedChambre" 	: ["switches * light * red"],
-			"YellowChambre" 	: ["switches * light * yellow"]
-		},
-		"scenario":{
-			"command" : "switchLight",
-			"lumiereambiance" 	: ["ambient light"],
-			"TVOn" 	: ["turn on the tv"]
 		},
 		"manageLight" : {
 			"command" : "switchLight",
 			"On" : ["turn on * light","light * light"],
-			"Off" : ["turn off * light"],
-			"OnHUESalon" : ["turn on * lamp","light * lamp"],
-			"OffHUESalon" : ["turn off * lamp"],
-			"OnHUESejour1" : ["light * first lamp"],
-			"OffHUESejour" : ["turn off * second lamp"],
-			"OnHUESejour2" : ["light * second lamp"],
-			"OffHUESejour2" : ["turn off * first lamp"]
+			"Off" : ["turn off * light"]
 		}
     }
   }
