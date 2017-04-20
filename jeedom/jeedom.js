@@ -26,21 +26,22 @@ exports.action = function(data, callback){
 	var tblCommand = {
 		// Allume/éteint par pièce
 		switchLight : function() { 
-		    // room: la pièce où l'ordre est exécutée
-			// data.client: là où l'action a été exécutée
-			switchLight(data.client, Config.modules.Jeedom.clients[room][data.action.value]);
+			switchLight(room, Config.modules.Jeedom.clients[room][data.action.value]);
 		},
 		resetSwitch : function(){
 			// test avec une règle "occupe-toi de la lumière" dans "rule" du prop
-			Avatar.speak("ok, je m'occupe de la lumière dans la pièce " + room, data.client, function() {
-				Avatar.Speech.end(data.client);
+			Avatar.speak("ok, je m'occupe de la lumière", room, function() {
+				Avatar.Speech.end(room);
 			});
 		}
 	};
 	
-	info("Jeedom command:", data.action.command.yellow, "From:", data.client.yellow);
-	room = ((data.action.room && data.action.room != 'current') ? data.action.room : data.client).toLowerCase();
-
+	// met dans la variable room le client concerné par la commande et qui peut être mappé
+	// Le speak sera redirigé automatiquement vers le client réel ou virtuel
+	room = (data.action.room && data.action.room != 'current') ? data.action.room : data.client;
+	// Affiche le nom du client concerné par l'action dans From
+	info("Jeedom command:", data.action.command.yellow, "From:", room.yellow);
+	
 	tblCommand[data.action.command]();
 	callback();
 }
@@ -105,4 +106,3 @@ function sendJsonRequest(_jsonrpc, callback){
 	});
 	
 }
-
