@@ -65,6 +65,7 @@ function requestJeedomAction (client, value, txt) {
 			});
 		} else {
 			var answer = !state ? "je ne suis pas arrivé à exécuter l'action" : "Command sent";
+			Avatar.Speech.end(client);
 			info(answer);
 		}
 	});
