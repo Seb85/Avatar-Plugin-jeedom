@@ -13,12 +13,21 @@ Controler la box domotique Jeedom
 
 
 ## Configuration
-La configuration du plugin se fait dans le fichier `Avatar-Serveur/plugins/jeedom/jeedom.prop`
+La configuration du plugin se fait dans le fichier `Avatar-Serveur/plugins/jeedom/jeedom.prop` et `Avatar-Serveur/plugins/jeedom/jeedom.js`
 
+jeedom.prop :
 Inscrire l'api key et l'adresse IP de votre Jeedom.
 
-Les réponses des interactions se font dans le fichier Jeedom.js.
+jeedom.js :
+Modifier dans tblcommand les requetes de votre choix :
+Scenario : requestJeedomScenario
+Commande : requestJeedomCmd
+Ainsi que les réponses.
    
 ## Versions
-Version 1.0 
+Version 1.1
+- Passage des requetes JSON en HTTP
+- Fini les ID d'interaction, les ID de scénario et commande sont utiliser
+
+Version 1.0
 - Version Released
