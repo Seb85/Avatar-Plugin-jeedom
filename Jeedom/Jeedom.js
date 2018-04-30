@@ -24,8 +24,8 @@ exports.action = function(data, callback){
 	}
 	
 	var tblCommand = {
-		switchLight : function() { requestJeedomAction(data.client, Config.modules.Jeedom.clients[room][data.action.value])},
-		PC : function(){ requestJeedomAction(data.client, Config.modules.Jeedom.clients[room][data.action.value], "Votre ordinateur s'allume.")}
+		switchLight : function() { requestJeedomCmd(data.client, Config.modules.Jeedom.clients[room][data.action.value])},
+		PC : function(){ requestJeedomScenario(data.client, Config.modules.Jeedom.clients[room][data.action.value], "Votre ordinateur s'allume.")}
 	};
 	
 	var room = setClient(data);
@@ -49,64 +49,43 @@ var setClient = function (data) {
 	return client;
 }
 
-
-
-function requestJeedomAction (client, value, txt) {
+function requestJeedomScenario (client, value, txt) {
 	
-	var jsonrpc = getJsonRpc(value);
-	jsonrpc.method = 'execute';
-	jsonrpc.params.id = value;
 	
-	sendJsonRequest(jsonrpc, function(state) { 
-		if (txt) {
-			var answer = !state ? "je ne suis pas arrivé à exécuter l'action" : txt;
-			Avatar.speak(answer, client, function() {
-				Avatar.Speech.end(client);
-			});
-		} else {
-			var answer = !state ? "je ne suis pas arrivé à exécuter l'action" : "Command sent";
-			Avatar.Speech.end(client);
-			info(answer);
-		}
-	});
-
-}
-
-
-
-function getJsonRpc(value) {
-	
-	var jsonrpc = {};
-	jsonrpc.id = value;
-	jsonrpc.params = {};
-	jsonrpc.params.apikey = _JeedomConf.apikey;
-	jsonrpc.params.plugin = 'sarah';
-	jsonrpc.jsonrpc = '2.0';
-	
-	return jsonrpc;
-}
-
-
-
-function sendJsonRequest(_jsonrpc, callback){
-	
-	var uri = _JeedomConf.ip + _JeedomConf.pathJeedomApi;
+	var uri = _JeedomConf.ip + _JeedomConf.pathJeedomApi + '?apikey=' + _JeedomConf.apikey + '&type=scenario&id=' + value + '&action=start';
 	
 	info('uri:', uri.yellow);
-	info('rpc:', _jsonrpc);
 	
 	request({
 		url: uri,
-		method: 'POST',
-		form: {request: JSON.stringify(_jsonrpc)}
+		method: 'POST'
 	},
-	function (err, response, json) {
+	function (err, response) {
 		if (err || response.statusCode != 200) {
 			info('Error: Callback request'.red);
 			return callback(false);
 		}
-		
-		callback(true);
+	   
+	});
+	
+}
+
+function requestJeedomCmd (client, value, txt) {
+	
+	
+	var uri = _JeedomConf.ip + _JeedomConf.pathJeedomApi + '?apikey=' + _JeedomConf.apikey + '&type=cmd&id=' + value;
+	
+	info('uri:', uri.yellow);
+	
+	request({
+		url: uri,
+		method: 'POST'
+	},
+	function (err, response) {
+		if (err || response.statusCode != 200) {
+			info('Error: Callback request'.red);
+			return callback(false);
+		}
 	   
 	});
 	
