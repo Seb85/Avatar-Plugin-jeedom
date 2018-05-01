@@ -27,7 +27,7 @@ Ainsi que les réponses.
 ## Versions
 Version 1.1
 - Passage des requetes JSON en HTTP
-- Fini les ID d'interaction, les ID de scénario et commande sont utiliser
+- Fini les ID d'interaction, les ID de scénario et commande sont utilisés
 
 Version 1.0
 - Version Released
