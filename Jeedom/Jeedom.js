@@ -60,6 +60,13 @@ function requestJeedomScenario (client, value, txt) {
 		url: uri,
 		method: 'POST'
 	},
+	function(state) {
+		if (txt) {
+			Avatar.speak(txt, client, function() {
+				Avatar.Speech.end(client);
+			});
+			}
+		},
 	function (err, response) {
 		if (err || response.statusCode != 200) {
 			info('Error: Callback request'.red);
@@ -81,6 +88,13 @@ function requestJeedomCmd (client, value, txt) {
 		url: uri,
 		method: 'POST'
 	},
+	function(state) {
+		if (txt) {
+			Avatar.speak(txt, client, function() {
+				Avatar.Speech.end(client);
+			});
+			}
+		},
 	function (err, response) {
 		if (err || response.statusCode != 200) {
 			info('Error: Callback request'.red);
