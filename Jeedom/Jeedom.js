@@ -65,7 +65,11 @@ function requestJeedomScenario (client, value, txt) {
 			Avatar.speak(txt, client, function() {
 				Avatar.Speech.end(client);
 			});
-			}
+			} else {
+			var answer = !state;
+			Avatar.Speech.end(client);
+			info(answer);
+		}
 		},
 	function (err, response) {
 		if (err || response.statusCode != 200) {
@@ -93,7 +97,11 @@ function requestJeedomCmd (client, value, txt) {
 			Avatar.speak(txt, client, function() {
 				Avatar.Speech.end(client);
 			});
-			}
+			} else {
+			var answer = !state;
+			Avatar.Speech.end(client);
+			info(answer);
+		}
 		},
 	function (err, response) {
 		if (err || response.statusCode != 200) {
