@@ -81,6 +81,37 @@ function requestJeedomScenario (client, value, txt) {
 	
 }
 
+function requestJeedomMute (client, value, txt) {
+	
+	
+	var uri = _JeedomConf.ip + _JeedomConf.pathJeedomApi + '?apikey=' + _JeedomConf.apikey + '&type=scenario&id=' + value + '&action=start';
+	
+	info('uri:', uri.yellow);
+	
+	request({
+		url: uri,
+		method: 'POST'
+	},
+	function(state) {
+		if (txt) {
+			Avatar.speak(txt, client, function() {
+				Avatar.Speech.end(client);
+			});
+			} else {
+			var answer = !state;
+			info(answer);
+		}
+		},
+	function (err, response) {
+		if (err || response.statusCode != 200) {
+			info('Error: Callback request'.red);
+			return callback(false);
+		}
+	   
+	});
+	
+}
+
 function requestJeedomCmd (client, value, txt) {
 	
 	
