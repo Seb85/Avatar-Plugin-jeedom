@@ -3,6 +3,7 @@
     "Jeedom" : {
 		"description": "Gestion de Jeedom",
 		"version": "1.1",
+		"active" : true,
 		"php" : "/core/api/jeeApi.php",
 		"apikey"     : "APIKEY",
 		"addrJeedom" : "http://@IPJEEDOM",
